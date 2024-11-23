@@ -81,18 +81,18 @@ export const Sidebar = ({ setOpen }: SidebarProps) => {
   });
 
   const sidebarItems: SidebarItem[] = [
-    {
-      path: "/dashboard/resumes",
-      name: t`Resumes`,
-      shortcut: "⇧R",
-      icon: <ReadCvLogo />,
-    },
-    {
-      path: "/dashboard/settings",
-      name: t`Settings`,
-      shortcut: "⇧S",
-      icon: <FadersHorizontal />,
-    },
+    // {
+    //   path: "/dashboard/resumes",
+    //   name: t`Resumes`,
+    //   shortcut: "⇧R",
+    //   icon: <ReadCvLogo />,
+    // },
+    // {
+    //   path: "/dashboard/settings",
+    //   name: t`Settings`,
+    //   shortcut: "⇧S",
+    //   icon: <FadersHorizontal />,
+    // },
   ];
 
   return (
@@ -117,12 +117,12 @@ export const Sidebar = ({ setOpen }: SidebarProps) => {
 
       <Separator className="opacity-50" />
 
-      <UserOptions>
+      {/* <UserOptions>
         <Button size="lg" variant="ghost" className="w-full justify-start px-3">
           <UserAvatar size={24} className="mr-3" />
           <span>{user?.name}</span>
         </Button>
-      </UserOptions>
+      </UserOptions> */}
 
       <Copyright className="ml-2" />
     </div>

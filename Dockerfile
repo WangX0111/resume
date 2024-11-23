@@ -7,7 +7,10 @@ ARG NX_CLOUD_ACCESS_TOKEN
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 
+ENV COREPACK_NPM_REGISTRY=https://registry.npmmirror.com
 RUN corepack enable pnpm && corepack prepare pnpm --activate
+RUN echo "module.exports = {registry: 'https://registry.npmmirror.com'}" >.pnpmfile.cjs
+RUN pnpm config set registry https://registry.npmmirror.com
 
 WORKDIR /app
 
@@ -20,6 +23,9 @@ COPY ./tools/prisma /app/tools/prisma
 RUN pnpm install --frozen-lockfile
 
 COPY . .
+RUN cp /etc/apt/sources.list /etc/apt/sources.list.bak
+ADD sources.list /etc/apt/ 
+RUN apt-get update 
 
 ENV NX_CLOUD_ACCESS_TOKEN=$NX_CLOUD_ACCESS_TOKEN
 

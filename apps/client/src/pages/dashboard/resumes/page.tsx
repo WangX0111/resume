@@ -7,12 +7,16 @@ import { Helmet } from "react-helmet-async";
 
 import { GridView } from "./_layouts/grid";
 import { ListView } from "./_layouts/list";
+import { UserOptions } from "@/client/components/user-options";
+import { Button, KeyboardShortcut, Separator } from "@reactive-resume/ui";
+import { UserAvatar } from "@/client/components/user-avatar";
+import { useUser } from "@/client/services/user";
 
 type Layout = "grid" | "list";
 
 export const ResumesPage = () => {
   const [layout, setLayout] = useState<Layout>("grid");
-
+  const{user} = useUser()
   return (
     <>
       <Helmet>
@@ -35,9 +39,7 @@ export const ResumesPage = () => {
             className="text-4xl font-bold tracking-tight"
           >
             {t`Resumes`}
-          </motion.h1>
-
-          <TabsList>
+            <TabsList>
             <TabsTrigger value="grid" className="size-8 p-0 sm:h-8 sm:w-auto sm:px-4">
               <SquaresFour />
               <span className="ml-2 hidden sm:block">{t`Grid`}</span>
@@ -47,8 +49,18 @@ export const ResumesPage = () => {
               <span className="ml-2 hidden sm:block">{t`List`}</span>
             </TabsTrigger>
           </TabsList>
-        </div>
+          
+          </motion.h1>
 
+
+        
+        <UserOptions>
+            <Button size="lg" variant="ghost" className="size-8 p-0 sm:h-8 sm:w-auto sm:px-4">
+              <UserAvatar size={24} className="mr-3" />
+              <span>{user?.name}</span>
+            </Button>
+          </UserOptions>
+          </div>
         <ScrollArea className="h-[calc(100vh-140px)] lg:h-[calc(100vh-88px)]">
           <TabsContent value="grid">
             <GridView />

@@ -24,18 +24,18 @@ export const HeroSection = () => (
       >
         <div className="hidden items-center gap-x-4 sm:flex">
           <Badge>{t`Version 4`}</Badge>
-
+{/* 
           <a
             href="https://docs.rxresu.me/overview/features"
             className={cn(buttonVariants({ variant: "link" }), "space-x-2 text-left")}
           >
             <p>{t`What's new in the latest version`}</p>
             <ArrowRight />
-          </a>
+          </a> */}
         </div>
 
         <div className="mt-10 space-y-2">
-          <h6 className="text-base font-bold tracking-wide">{t`Finally,`}</h6>
+          {/* <h6 className="text-base font-bold tracking-wide">{t`Finally,`}</h6> */}
           <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
             {t`A free and open-source resume builder`}
           </h1>
